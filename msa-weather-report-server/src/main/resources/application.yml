@@ -1,0 +1,16 @@
+server:
+  port: 8083
+  context-path: /report-server
+spring:
+  thymeleaf:
+    cache: true
+  mvc:
+    view:
+      suffix: .html
+      prefix: /templates/weather
+  application:
+    name: micro-weather-report-client
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+  context-path: /weather-collection-server
+spring:
+  redis:
+    host: 39.106.37.46
+    port: 6379
+    database: 2
+    password: info@jtedu.io
+  application:
+    name: micro-weather-collection-client
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/

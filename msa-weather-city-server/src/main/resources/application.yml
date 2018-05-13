@@ -1,0 +1,10 @@
+server:
+  port: 8084
+  context-path: /weather-city-server
+spring:
+  application:
+    name: micro-weather-city-client
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
