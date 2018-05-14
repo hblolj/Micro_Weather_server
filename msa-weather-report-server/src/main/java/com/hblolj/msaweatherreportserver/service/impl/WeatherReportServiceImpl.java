@@ -5,6 +5,7 @@ import com.hblolj.msaweatherreportserver.service.WeatherReportService;
 import com.hblolj.msaweatherreportserver.vo.Weather;
 import com.hblolj.msaweatherreportserver.vo.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
@@ -24,6 +25,9 @@ public class WeatherReportServiceImpl implements WeatherReportService {
     public Weather getDataByCityId(String cityId) {
         // 由天气数据 API 微服务来提供
         WeatherResponse response = weatherDataService.getWeatherByCityId(cityId);
+        if (response == null){
+            return null;
+        }
         return response.getData();
     }
 }

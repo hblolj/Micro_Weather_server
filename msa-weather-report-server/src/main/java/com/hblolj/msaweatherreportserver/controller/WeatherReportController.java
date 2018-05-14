@@ -1,11 +1,12 @@
 package com.hblolj.msaweatherreportserver.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.hblolj.msaweatherreportserver.service.WeatherCityService;
+import com.hblolj.msaweatherreportserver.service.WeatherDataService;
 import com.hblolj.msaweatherreportserver.service.WeatherReportService;
 import com.hblolj.msaweatherreportserver.vo.City;
+import com.hblolj.msaweatherreportserver.vo.Weather;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +26,20 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/report")
 public class WeatherReportController {
+
 	private final static Logger logger = LoggerFactory.getLogger(WeatherReportController.class);  
 
 	@Autowired
 	private WeatherReportService weatherReportService;
 
 	@Autowired
-	private WeatherCityService weatherCityService;
+	private WeatherDataService weatherDataService;
 	
 	@GetMapping("/cityId/{cityId}")
 	public ModelAndView getReportByCityId(@PathVariable("cityId") String cityId, Model model) throws Exception {
 		// 获取城市ID列表
-		// 改为由城市数据API微服务来提供数据
-		List<City> cityList = weatherCityService.listCity();
+		// 改为由城市数据API微服务来提供数据(实际上寻找的是路由微服务)
+		List<City> cityList = weatherDataService.listCity();
 		
 		model.addAttribute("title", "Ori的天气预报");
 		model.addAttribute("cityId", cityId);

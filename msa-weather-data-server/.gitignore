@@ -1,6 +1,5 @@
-.gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
+/target/
+!.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -16,8 +15,12 @@
 *.iws
 *.iml
 *.ipr
-/out/
-
+.gitignore
+/gradle
+/.gradle
+/out
+gradlew.bat
+gradlew
 ### NetBeans ###
 /nbproject/private/
 /build/

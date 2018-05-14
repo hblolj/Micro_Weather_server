@@ -10,7 +10,14 @@ spring:
       prefix: /templates/weather
   application:
     name: micro-weather-report-client
+  cloud:
+    config:
+      profile: dev
+      uri: http://localhost:8087/config-server/
 eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
